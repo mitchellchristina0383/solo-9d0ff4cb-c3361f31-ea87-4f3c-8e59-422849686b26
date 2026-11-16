@@ -1,0 +1,15 @@
+services:
+  alert-api:
+    build: .
+    image: dependency-alert-api:latest
+    container_name: dependency-alert-api
+    ports:
+      - "8000:8000"
+    environment:
+      ALERT_DB_PATH: /data/alerts.db
+    volumes:
+      - alert-data:/data
+    restart: unless-stopped
+
+volumes:
+  alert-data:
